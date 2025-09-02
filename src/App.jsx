@@ -10,6 +10,7 @@ import Destinations from './pages/Destinations';
 import About from './pages/About';
 
 import Contact from './pages/Contact';
+import Confirmation from './pages/Confirmation';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="destinations" element={<Destinations />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="confirmation" element={<Confirmation />} />
       </Route>
     </Routes>
   );

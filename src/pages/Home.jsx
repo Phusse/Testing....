@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -8,11 +9,19 @@ const Home = () => {
   const [departureDate, setDepartureDate] = useState(new Date());
   const [returnDate, setReturnDate] = useState(null);
   const [passengers, setPassengers] = useState(1);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic, e.g., redirect to booking page with query params
-    console.log({ from, to, departureDate, returnDate, passengers });
+    const searchParams = new URLSearchParams({
+      from,
+      to,
+      departureDate: departureDate.toISOString(),
+      returnDate: returnDate ? returnDate.toISOString() : '',
+      passengers,
+    }).toString();
+
+    navigate(`/book?${searchParams}`);
   };
 
   return (
